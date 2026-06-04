@@ -2,11 +2,13 @@ import { Input } from "@base-ui/react";
 import { Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { buttonVariants } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 function Navbar() {
   return (
-    <header>
-      <div>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex h-14 max-w-[1200px] items-center gap-4 px-4">
         <Link
           href="/"
           className={
@@ -30,6 +32,23 @@ function Navbar() {
             className="h-10 w-full rounded-full border-border bg-card pl-10 pr-16 text-sm"
             aria-label="Search posts"
           />
+        </div>
+
+        <div className="ml-auto flex items-c gap-2">
+          <Link
+            href={"/auth/sign-in"}
+            className={cn(
+              buttonVariants({ variant: "ghost", size: "default" }),
+            )}
+          >
+            Log In
+          </Link>
+          <Link
+            href={"/auth/sign-up"}
+            className={cn(buttonVariants({ variant: "default" }))}
+          >
+            Sign Up
+          </Link>
         </div>
       </div>
     </header>
