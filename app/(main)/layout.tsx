@@ -1,8 +1,10 @@
 import LeftSidebar from "@/components/layout/left-sidebar";
 import Navbar from "@/components/layout/navbar";
+import { getSessionUser } from "@/lib/auth";
 import React from "react";
 
-function MainGroupLayout({ children }: { children: React.ReactNode }) {
+async function MainGroupLayout({ children }: { children: React.ReactNode }) {
+  const user = await getSessionUser();
   return (
     <>
       <Navbar />
