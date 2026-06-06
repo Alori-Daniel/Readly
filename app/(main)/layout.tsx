@@ -9,7 +9,7 @@ async function MainGroupLayout({ children }: { children: React.ReactNode }) {
     <>
       <Navbar />
       <div className="mx-auto flex max-w-[1200px] gap-8 px-4 pb-16 pt-2">
-        <LeftSidebar />
+        <LeftSidebar showCta={!user} />
         <div className="min-w-0 flex-1">{children}</div>
       </div>
     </>

@@ -4,7 +4,12 @@ import Link from "next/link";
 import React from "react";
 import { Button, buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { SignedIn, SignedOut, SignOut } from "@neondatabase/auth/react";
+import {
+  SignedIn,
+  SignedOut,
+  SignOut,
+  UserButton,
+} from "@neondatabase/auth/react";
 
 function Navbar() {
   return (
@@ -54,7 +59,7 @@ function Navbar() {
           >
             <Bell className="size-5" />
           </Button>
-          {/* <UserButton /> */}
+          <UserButton />
         </SignedIn>
 
         <SignedOut>
