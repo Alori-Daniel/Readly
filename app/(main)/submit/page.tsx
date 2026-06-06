@@ -2,8 +2,10 @@ import { SubmitPostForm } from "@/components/post/submit-post-form";
 import { getSessionUser } from "@/lib/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 
 export default async function SubmitPage() {
+  await connection();
   const user = await getSessionUser();
   if (!user) {
     redirect("/auth/sign-in");

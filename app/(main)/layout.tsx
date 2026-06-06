@@ -2,9 +2,11 @@ import LeftSidebar from "@/components/layout/left-sidebar";
 import Navbar from "@/components/layout/navbar";
 import { getSessionUser } from "@/lib/auth";
 import { tagPostCounts } from "@/lib/db/queries";
+import { connection } from "next/server";
 import React from "react";
 
 async function MainGroupLayout({ children }: { children: React.ReactNode }) {
+  await connection();
   const user = await getSessionUser();
   const tags = await tagPostCounts();
   return (
