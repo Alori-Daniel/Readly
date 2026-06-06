@@ -4,9 +4,9 @@ import { Flame, Home, Icon, LayoutGrid } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
-import LetfTags from "./left-tags";
 import { JoinCtaCard } from "./join-cta-card";
-import LeftTags from "./left-tags";
+import { LeftTags } from "./left-tags";
+import { Tag } from "@/lib/types";
 
 const nav = [
   { href: "/", label: "Home", icon: Home, match: "home" as const },
@@ -19,7 +19,13 @@ const nav = [
   },
 ];
 
-function LeftSidebar({ showCta }: { showCta: boolean }) {
+function LeftSidebar({
+  showCta,
+  tagsWithCounts,
+}: {
+  showCta: boolean;
+  tagsWithCounts: { tag: Tag; count: number }[];
+}) {
   const pathname = usePathname();
   const sp = useSearchParams();
   const sort = sp.get("sort");
@@ -63,7 +69,7 @@ function LeftSidebar({ showCta }: { showCta: boolean }) {
         <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
           Top Tags
         </p>
-        <LeftTags />
+        <LeftTags items={tagsWithCounts} />
       </div>
       {showCta && (
         <div className="mt-8">
